@@ -6,6 +6,7 @@ import {BillingComponent} from "../billing/billing.component";
 import {FacturaModel} from "@models/factura.model";
 import {debounceTime} from "rxjs";
 import { BillingService } from '@services/billing.service';
+import { ReportService } from '@services/report.service';
 
 @Component({
   selector: 'app-billing-list',
@@ -24,7 +25,8 @@ export class BillingListComponent implements OnInit {
 
   constructor(
     public dialog: Dialog,
-    private billingService: BillingService) {
+    private billingService: BillingService,
+    private reportService: ReportService) {
   }
   openDialog()  {
     this.dialog.open(BillingComponent, {
@@ -89,6 +91,17 @@ export class BillingListComponent implements OnInit {
   pagination(ubicacion: number){
     this.dataSource.rowsPresent(ubicacion*this.numRegistro,
       ubicacion*this.numRegistro + parseInt(String(this.numRegistro)));
+  }
+
+  downloadPdf(): void {
+    this.reportService.generatePdf().subscribe((pdfBlob: Blob) => {
+      // Puedes manejar el Blob según tus necesidades, por ejemplo, descargar el PDF
+      const blobUrl = URL.createObjectURL(pdfBlob);
+      const link = document.createElement('a');
+      link.href = blobUrl;
+      link.download = 'reporte.pdf';
+      link.click();
+    });
   }
 
 }

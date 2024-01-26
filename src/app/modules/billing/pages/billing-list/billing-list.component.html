@@ -86,8 +86,12 @@
         <ng-container cdkColumnDef="actions">
           <th cdk-header-cell class="px-6 py-3" *cdkHeaderCellDef> Action</th>
           <td cdk-cell class="px-7 py-3" *cdkCellDef="let row" >
-            <app-btn (click)="openDialog2(row)">editar</app-btn>
-            <app-btn (click)="delete(row)">borrar</app-btn>
+            <a (click)="openDialog2(row)">
+              <img class="w-8 h-8 rounded-full" src="/assets/images/icon/editar.jpg" alt="PDF Icon">
+            </a>
+            <a (click)="delete(row)">
+              <img class="w-8 h-8 rounded-full" src="/assets/images/icon/eliminar.jpg" alt="PDF Icon">
+            </a>
           </td>
           <td cdk-footer-cell class="px-6 py-3" *cdkFooterCellDef> </td>
         </ng-container>
@@ -128,7 +132,7 @@
         <option value="20">20</option>
       </select>
       <app-btn [typeBtn]="'button'" [color]="'primary'" (click)="openDialog()">Create</app-btn>
-      <app-btn [typeBtn]="'button'" [color]="'danger'" routerLink="/" >Navegar</app-btn>
+      <app-btn [typeBtn]="'button'" [color]="'primary'" (click)="downloadPdf()" >Imprimir</app-btn>
     </div>
 
 
