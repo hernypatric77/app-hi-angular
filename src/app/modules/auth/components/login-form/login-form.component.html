@@ -1,0 +1,67 @@
+<h1 class="text-center font-bold py-2 text-gray-700">Log in to app prueba</h1>
+<form [formGroup]="form" novalidate class="space-y-4" (ngSubmit)="doLogin()">
+  <div>
+    <div class="relative">
+      <input
+        #nameInput
+        formControlName="userName"
+        placeholder="Enter userName"
+        type="text"
+        class="w-full rounded bg-gray-100 border-gray-300 border-2"
+      />
+      <button type="button" class="p-2 absolute right-2" (click)="nameInput.focus()">
+        <fa-icon [icon]="faPen"></fa-icon>
+      </button>
+    </div>
+    <div *ngIf="form.controls.userName.touched">
+      <p
+        *ngIf="form.controls.userName.hasError('required')"
+        class="font-medium text-red-500 text-xs mt-1 ml-1"
+      >
+        El campo es requerido
+      </p>
+
+    </div>
+  </div>
+  <div>
+    <div class="relative">
+      <input
+        formControlName="password"
+        placeholder="Enter password"
+        [type]="showPassword ? 'text' : 'password'"
+        class="w-full rounded bg-gray-100 border-gray-300 border-2"
+      />
+      <button type="button" class="p-2 absolute right-2" (click)="showPassword = !showPassword">
+        <fa-icon [icon]="showPassword ? faEye : faEyeSlash"></fa-icon>
+      </button>
+    </div>
+    <div *ngIf="form.controls.password.touched">
+      <p
+        *ngIf="form.controls.password.hasError('required')"
+        class="font-medium text-red-500 text-xs mt-1 ml-1"
+      >
+        El campo es requerido
+      </p>
+      <p
+        *ngIf="form.controls.password.hasError('minlength')"
+        class="font-medium text-red-500 text-xs mt-1 ml-1"
+      >
+        Este campo debe tener más de 6 caracteres
+      </p>
+    </div>
+  </div>
+  <div>
+    <app-btn
+      typeBtn="submit"
+      color="success"
+      [loading]="status === 'loading'"
+      >Login</app-btn
+    >
+    <p
+      *ngIf="status === 'failed'"
+      class="font-medium text-red-500 text-xs mt-1 ml-1"
+    >
+      Las credenciale ingresadas son incorrectas por favor verifique.
+    </p>
+  </div>
+</form>

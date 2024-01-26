@@ -1,0 +1,161 @@
+
+
+<div class="w-screen h-screen relative bg-gray-100">
+  <div class="w-full sm:w-5/6 md:w-4/5 lg:w-3/4 m-auto pt-10 lg:pt-24">
+    <div class="flex items-center p-4 space-x-2 ">
+      <!--<button id="dropdownActionButton"
+              class="inline-flex items-center text-gray-500 bg-white border border-gray-300 focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-200 font-medium rounded-lg text-sm px-3 py-1.5 "
+              type="button"
+              aria-expanded="false"
+              (click)="isOpenMenu = !isOpenMenu"
+              cdkOverlayOrigin
+              #menuDropdownAction="cdkOverlayOrigin">
+        <span class="sr-only">Action button</span>
+        Action
+        <svg class="w-2.5 h-2.5 ml-2.5"
+             aria-hidden="true"
+             xmlns="http://www.w3.org/2000/svg"
+             fill="none"
+             viewBox="0 0 10 6">
+          <path stroke="currentColor"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="m1 1 4 4 4-4"/>
+        </svg>
+      </button>-->
+      <div class="flex items-center justify-between py-4">
+
+
+        <label for="table-search-users" class="sr-only">Search</label>
+        <div class="relative">
+          <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
+            <svg class="w-4 h-4 text-gray-500 " aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
+                 viewBox="0 0 20 20">
+              <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                    d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z"/>
+            </svg>
+          </div>
+          <input type="search" id="table-search-users"
+                 [formControl]="inputSearch"
+                 class="block p-2 pl-10 text-sm text-gray-900 border border-gray-300 rounded-lg w-80 bg-gray-50 focus:ring-blue-500 focus:border-blue-500 "
+                 placeholder="Search for users">
+        </div>
+      </div>
+    </div>
+    <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
+
+      <table class="w-full text-sm text-left text-gray-500" cdk-table [dataSource]="dataSource">
+        <tr cdk-header-row class="text-xs text-gray-700 uppercase bg-gray-50" *cdkHeaderRowDef="columns"></tr>
+        <tr cdk-row class="bg-white border-b hover:bg-gray-50 " [ngClass]="{'bg-red-200' : row.price >= 1000 }" *cdkRowDef="let row; columns: columns"></tr>
+        <tr cdk-footer-row class="text-xl text-gray-700 uppercase bg-gray-200" *cdkFooterRowDef="columns"></tr>
+
+        <!--  id Columns-->
+       <!-- <ng-container cdkColumnDef="cover">
+          <th cdk-header-cell class="px-6 py-3" *cdkHeaderCellDef> Cover</th>
+          <td cdk-cell class="px-7 py-3" *cdkCellDef="let row" >
+            <img class="w-12" [src]="row.images[0]" alt="imagen">
+          </td>
+          <td cdk-footer-cell class="px-6 py-3" *cdkFooterCellDef></td>
+        </ng-container>-->
+        <!--  id Columns-->
+        <ng-container cdkColumnDef="id">
+          <th cdk-header-cell class="px-6 py-3" *cdkHeaderCellDef> Id.</th>
+          <td cdk-cell class="px-7 py-3" *cdkCellDef="let row" > {{ row.id}} </td>
+          <td cdk-footer-cell class="px-6 py-3" *cdkFooterCellDef></td>
+        </ng-container>
+        <!--  title columns-->
+        <ng-container cdkColumnDef="numeroFactura">
+          <th cdk-header-cell class="px-6 py-3" *cdkHeaderCellDef> N° Factura</th>
+          <td cdk-cell class="px-7 py-3" *cdkCellDef="let row" > {{ row.numeroFactura}} </td>
+          <td cdk-footer-cell class="px-6 py-3" *cdkFooterCellDef></td>
+        </ng-container>
+        <!--  fecha columns-->
+        <ng-container cdkColumnDef="fecha">
+          <th cdk-header-cell class="px-6 py-3" *cdkHeaderCellDef> Fecha</th>
+          <td cdk-cell class="px-7 py-3" *cdkCellDef="let row" > {{ row.fecha}} </td>
+          <td cdk-footer-cell class="px-6 py-3" *cdkFooterCellDef> </td>
+        </ng-container>
+        <!--  price columns-->
+        <ng-container cdkColumnDef="total">
+          <th cdk-header-cell class="px-6 py-3" *cdkHeaderCellDef> Total</th>
+          <td cdk-cell class="px-7 py-3" *cdkCellDef="let row" > {{ row.total}} </td>
+          <td cdk-footer-cell class="px-6 py-3" *cdkFooterCellDef> {{total}}</td>
+        </ng-container>
+        <!--  actiond columns-->
+        <ng-container cdkColumnDef="actions">
+          <th cdk-header-cell class="px-6 py-3" *cdkHeaderCellDef> Action</th>
+          <td cdk-cell class="px-7 py-3" *cdkCellDef="let row" >
+            <app-btn (click)="openDialog2(row)">editar</app-btn>
+            <app-btn (click)="delete(row)">borrar</app-btn>
+          </td>
+          <td cdk-footer-cell class="px-6 py-3" *cdkFooterCellDef> </td>
+        </ng-container>
+      </table>
+
+      <nav class="flex items-center justify-between pt-4" aria-label="Table navigation">
+        <span class="text-sm font-normal text-gray-500 dark:text-gray-400">Showing <span class="font-semibold text-gray-900 dark:text-white">1-10</span> of <span class="font-semibold text-gray-900">1000</span></span>
+        <ul class="inline-flex -space-x-px text-sm h-8">
+          <li>
+            <a href="#" class="flex items-center justify-center px-3 h-8 ml-0 leading-tight text-gray-500 bg-white border border-gray-300 rounded-l-lg hover:bg-gray-100 hover:text-gray-700 ">Previous</a>
+          </li>
+          <li>
+            <a (click)="pagination(1)" class="flex items-center justify-center px-3 h-8 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700 ">1</a>
+          </li>
+          <li>
+            <a (click)="pagination(2)" class="flex items-center justify-center px-3 h-8 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700 ">2</a>
+          </li>
+          <li>
+            <a (click)="pagination(3)" aria-current="page" class="flex items-center justify-center px-3 h-8 text-blue-600 border border-gray-300 bg-blue-50 hover:bg-blue-100 hover:text-blue-700 ">3</a>
+          </li>
+          <li>
+            <a (click)="pagination(4)" class="flex items-center justify-center px-3 h-8 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700 ">4</a>
+          </li>
+          <li>
+            <a (click)="pagination(5)" class="flex items-center justify-center px-3 h-8 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700 ">5</a>
+          </li>
+          <li>
+            <a (click)="pagination(6)" class="flex items-center justify-center px-3 h-8 leading-tight text-gray-500 bg-white border border-gray-300 rounded-r-lg hover:bg-gray-100 hover:text-gray-700 ">Next</a>
+          </li>
+        </ul>
+      </nav>
+
+    </div>
+    <div class="flex items-center p-4 space-x-2 ">
+      <select [(ngModel)]="numRegistro" (change)="onSeleccionChange($event)" class="text-gray-500 bg-gray-100 rounded-lg text-sm px-5 py-2 focus:ring-4">
+        <option value="5">5</option>
+        <option value="10">10</option>
+        <option value="20">20</option>
+      </select>
+      <app-btn [typeBtn]="'button'" [color]="'primary'" (click)="openDialog()">Create</app-btn>
+      <app-btn [typeBtn]="'button'" [color]="'danger'" routerLink="/" >Navegar</app-btn>
+    </div>
+
+
+  </div>
+<!--  <ng-template cdkConnectedOverlay [cdkConnectedOverlayOrigin]="menuDropdownAction"-->
+<!--               [cdkConnectedOverlayOpen]="isOpenMenu">-->
+<!--    <div id="menuDropdownAction" class="z-50  bg-white divide-y divide-gray-100 rounded-lg shadow w-44 "-->
+<!--         aria-labelledby="dropdownActionButton">-->
+<!--      <ul class="py-1 text-sm text-gray-700 ">-->
+<!--        <li>-->
+<!--          <a href="#" class="block px-4 py-2 hover:bg-gray-100 ">Reward</a>-->
+<!--        </li>-->
+<!--        <li>-->
+<!--          <a href="#" class="block px-4 py-2 hover:bg-gray-100 ">Promote</a>-->
+<!--        </li>-->
+<!--        <li>-->
+<!--          <a href="#" class="block px-4 py-2 hover:bg-gray-100 ">Activate account</a>-->
+<!--        </li>-->
+<!--      </ul>-->
+<!--      <div class="py-1">-->
+<!--        <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 ">Delete User</a>-->
+<!--      </div>-->
+<!--    </div>-->
+<!--  </ng-template>-->
+</div>
+
+
+
+
+
