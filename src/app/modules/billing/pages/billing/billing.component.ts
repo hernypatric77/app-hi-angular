@@ -20,11 +20,11 @@ constructor(public dialogRef: DialogRef,
             private billingService: BillingService) {
 }
 form = new FormGroup({
-
-    numeroFactura: new FormControl ( this.data?.factura?.numeroFactura ?? '', Validators.required),
-    idCliente: new FormControl(this.data?.factura?.idCliente ?? '', Validators.required),
-    // prices: new FormControl('', Validators.required),
-    // images: new FormControl('', Validators.required),
+  numeroFactura: new FormControl ( this.data?.factura?.numeroFactura ?? '', Validators.required),
+  idCliente: new FormControl(this.data?.factura?.idCliente ?? '', Validators.required),
+  proveedor: new FormControl('', Validators.required),
+  producto: new FormControl('', Validators.required),
+  estado: new FormControl('A'),
 });
 
 
@@ -47,21 +47,20 @@ form = new FormGroup({
         }
     }
 
-    get numeroFacturaField(){
-      return this.form.get('numFactura');
-    }
+  get numeroFacturaField(){
+    return this.form.get('numFactura');
+  }
 
-    get idClienteField(){
-        return this.form.get('title');
-    }
+  get idClienteField(){
+    return this.form.get('idCliente');
+  }
 
-    get pricesField(){
-        return this.form.get('prices');
-    }
-
-    get imagesField(){
-        return this.form.get('images');
-    }
+  get proveedorField(){
+    return this.form.get('proveedor');
+  }
+  get productoField(){
+    return this.form.get('proveedor');
+  }
 
     save() {
         console.log(this.form.value);

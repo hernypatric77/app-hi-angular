@@ -9,23 +9,9 @@
       <!-- Modal header -->
       <div class="flex items-start justify-between p-4 border-b rounded-t ">
         <h3 class="text-xl font-semibold text-gray-900 ">
-          Edit user
+          Editar Factura
         </h3>
 
-        <div>
-          My favorite animal is:
-          <ul>
-            <li>
-              <span *ngIf="data.animal === 'panda'">&#10003;</span> Panda
-            </li>
-            <li>
-              <span *ngIf="data.animal === 'unicorn'">&#10003;</span> Unicorn
-            </li>
-            <li>
-              <span *ngIf="data.animal === 'lion'">&#10003;</span> Lion
-            </li>
-          </ul>
-        </div>
 
 
         <button type="button"
@@ -62,24 +48,24 @@
               <span class="font-medium">Requeirdo!</span> campo requerido.</p>
           </div>
 
-          <!--<div class="col-span-6 sm:col-span-3">
-            <label for="imagen" class="block mb-2 text-sm font-medium text-gray-900 ">Imagen</label>
+          <div class="col-span-6 sm:col-span-3">
+            <label for="imagen" class="block mb-2 text-sm font-medium text-gray-900 ">Codigo Proveedor</label>
             <input type="text" name="email" id="imagen"
-                   formControlName="images" [ngClass]="validations('images')"
+                   formControlName="proveedor" [ngClass]="validations('proveedor')"
                    class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 "
                    placeholder="example@company.com">
-            <p class="mt-2 text-sm text-red-600 " *ngIf="imagesField?.touched && imagesField?.hasError('required')">
+            <p class="mt-2 text-sm text-red-600 " *ngIf="proveedorField?.touched && proveedorField?.hasError('required')">
               <span class="font-medium">Requeirdo!</span> campo requerido.</p>
           </div>
           <div class="col-span-6 sm:col-span-3">
-            <label for="phone-number" class="block mb-2 text-sm font-medium text-gray-900 ">Precio</label>
+            <label for="phone-number" class="block mb-2 text-sm font-medium text-gray-900 ">Codigo Producto</label>
             <input type="number" name="phone-number" id="phone-number"
-                   formControlName="prices" [ngClass]="validations('prices')"
+                   formControlName="producto" [ngClass]="validations('producto')"
                    class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 "
                    placeholder="e.g. +(12)3456 789">
-            <p class="mt-2 text-sm text-red-600 " *ngIf="pricesField?.touched && pricesField?.hasError('required')">
+            <p class="mt-2 text-sm text-red-600 " *ngIf="productoField?.touched && productoField?.hasError('required')">
               <span class="font-medium">Requeirdo!</span> campo requerido.</p>
-          </div>-->
+          </div>
 
         </div>
       </div>
