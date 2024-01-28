@@ -32,9 +32,9 @@ export class BillingListComponent implements OnInit {
     this.dialog.open(BillingComponent, {
       minWidth: '300px',
       data: {
-        animal: 'lion',
+        tipoAccion: 'create',
+      }
 
-      },
     });
   }
 
@@ -42,7 +42,7 @@ export class BillingListComponent implements OnInit {
     this.dialog.open(BillingComponent, {
       minWidth: '300px',
       data: {
-        animal: 'panda',
+        tipoAccion: 'edit',
         factura: facturaModel,
       },
     });

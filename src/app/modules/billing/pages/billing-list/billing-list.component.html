@@ -47,17 +47,9 @@
 
       <table class="w-full text-sm text-left text-gray-500" cdk-table [dataSource]="dataSource">
         <tr cdk-header-row class="text-xs text-gray-700 uppercase bg-gray-50" *cdkHeaderRowDef="columns"></tr>
-        <tr cdk-row class="bg-white border-b hover:bg-gray-50 " [ngClass]="{'bg-red-200' : row.price >= 1000 }" *cdkRowDef="let row; columns: columns"></tr>
+        <tr cdk-row class="bg-white border-b hover:bg-gray-50 " [ngClass]="{'bg-red-200' : row.total >= 10 }" *cdkRowDef="let row; columns: columns"></tr>
         <tr cdk-footer-row class="text-xl text-gray-700 uppercase bg-gray-200" *cdkFooterRowDef="columns"></tr>
 
-        <!--  id Columns-->
-       <!-- <ng-container cdkColumnDef="cover">
-          <th cdk-header-cell class="px-6 py-3" *cdkHeaderCellDef> Cover</th>
-          <td cdk-cell class="px-7 py-3" *cdkCellDef="let row" >
-            <img class="w-12" [src]="row.images[0]" alt="imagen">
-          </td>
-          <td cdk-footer-cell class="px-6 py-3" *cdkFooterCellDef></td>
-        </ng-container>-->
         <!--  id Columns-->
         <ng-container cdkColumnDef="id">
           <th cdk-header-cell class="px-6 py-3" *cdkHeaderCellDef> Id.</th>
@@ -73,7 +65,7 @@
         <!--  fecha columns-->
         <ng-container cdkColumnDef="fecha">
           <th cdk-header-cell class="px-6 py-3" *cdkHeaderCellDef> Fecha</th>
-          <td cdk-cell class="px-7 py-3" *cdkCellDef="let row" > {{ row.fecha}} </td>
+          <td cdk-cell class="px-7 py-3" *cdkCellDef="let row" > {{ row.fecha}} - {{row.idProveedor}} </td>
           <td cdk-footer-cell class="px-6 py-3" *cdkFooterCellDef> </td>
         </ng-container>
         <!--  price columns-->
@@ -139,26 +131,6 @@
 
 
   </div>
-<!--  <ng-template cdkConnectedOverlay [cdkConnectedOverlayOrigin]="menuDropdownAction"-->
-<!--               [cdkConnectedOverlayOpen]="isOpenMenu">-->
-<!--    <div id="menuDropdownAction" class="z-50  bg-white divide-y divide-gray-100 rounded-lg shadow w-44 "-->
-<!--         aria-labelledby="dropdownActionButton">-->
-<!--      <ul class="py-1 text-sm text-gray-700 ">-->
-<!--        <li>-->
-<!--          <a href="#" class="block px-4 py-2 hover:bg-gray-100 ">Reward</a>-->
-<!--        </li>-->
-<!--        <li>-->
-<!--          <a href="#" class="block px-4 py-2 hover:bg-gray-100 ">Promote</a>-->
-<!--        </li>-->
-<!--        <li>-->
-<!--          <a href="#" class="block px-4 py-2 hover:bg-gray-100 ">Activate account</a>-->
-<!--        </li>-->
-<!--      </ul>-->
-<!--      <div class="py-1">-->
-<!--        <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 ">Delete User</a>-->
-<!--      </div>-->
-<!--    </div>-->
-<!--  </ng-template>-->
 </div>
 
 

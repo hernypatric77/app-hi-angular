@@ -5,5 +5,7 @@ export interface FacturaModel{
   fecha: string,
   total: number,
   idCliente: number,
+  idProvedor: number,
+  idProducto: number,
   estado: string;
 }

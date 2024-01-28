@@ -30,7 +30,7 @@
         <div class="grid grid-cols-6 gap-6">
           <div class="col-span-6 sm:col-span-3">
             <label for="cod-product" class="block mb-2 text-sm font-medium text-gray-900 ">N° factura</label>
-            <input type="text" name="first-name" id="cod-product"
+            <input type="text" name="cod-product" id="cod-product"
                    [ngClass]="validations('numeroFactura')"  formControlName="numeroFactura"
                    class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 "
                    placeholder="Bonnie">
@@ -39,8 +39,8 @@
           </div>
 
           <div class="col-span-6 sm:col-span-3">
-            <label for="last-name" class="block mb-2 text-sm font-medium text-gray-900 ">Codigo cliente</label>
-            <input type="text" name="last-name" id="last-name"
+            <label for="cod-cliente" class="block mb-2 text-sm font-medium text-gray-900 ">Codigo cliente</label>
+            <input type="text" name="last-name" id="cod-cliente"
                    formControlName="idCliente" [ngClass]="validations('idCliente')"
                    class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 "
                    placeholder="Green" >
@@ -49,21 +49,21 @@
           </div>
 
           <div class="col-span-6 sm:col-span-3">
-            <label for="imagen" class="block mb-2 text-sm font-medium text-gray-900 ">Codigo Proveedor</label>
-            <input type="text" name="email" id="imagen"
-                   formControlName="proveedor" [ngClass]="validations('proveedor')"
+            <label for="id-proveedor" class="block mb-2 text-sm font-medium text-gray-900 ">Codigo Proveedor</label>
+            <input type="text" name="email" id="id-proveedor"
+                   formControlName="idProvedor" [ngClass]="validations('idProvedor')"
                    class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 "
-                   placeholder="example@company.com">
-            <p class="mt-2 text-sm text-red-600 " *ngIf="proveedorField?.touched && proveedorField?.hasError('required')">
+                   placeholder="Valores 1-4">
+            <p class="mt-2 text-sm text-red-600 " *ngIf="idProvedorField?.touched && idProvedorField?.hasError('required')">
               <span class="font-medium">Requeirdo!</span> campo requerido.</p>
           </div>
           <div class="col-span-6 sm:col-span-3">
-            <label for="phone-number" class="block mb-2 text-sm font-medium text-gray-900 ">Codigo Producto</label>
-            <input type="number" name="phone-number" id="phone-number"
-                   formControlName="producto" [ngClass]="validations('producto')"
+            <label for="cod-producto" class="block mb-2 text-sm font-medium text-gray-900 ">Codigo Producto</label>
+            <input type="number" name="cod-producto" id="cod-producto"
+                   formControlName="idProducto" [ngClass]="validations('idProducto')"
                    class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 "
-                   placeholder="e.g. +(12)3456 789">
-            <p class="mt-2 text-sm text-red-600 " *ngIf="productoField?.touched && productoField?.hasError('required')">
+                   placeholder="valores 1-12">
+            <p class="mt-2 text-sm text-red-600 " *ngIf="idProductoField?.touched && idProductoField?.hasError('required')">
               <span class="font-medium">Requeirdo!</span> campo requerido.</p>
           </div>
 

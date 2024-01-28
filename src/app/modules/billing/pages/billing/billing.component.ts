@@ -5,7 +5,7 @@ import {BillingService} from "@services/billing.service";
 import {BillingListComponent} from "../billing-list/billing-list.component";
 import {FacturaModel} from "@models/factura.model";
 export interface DialogData {
-  animal: 'panda' | 'unicorn' | 'lion';
+  tipoAccion: 'edit'|'create';
   factura: FacturaModel;
 }
 
@@ -22,8 +22,10 @@ constructor(public dialogRef: DialogRef,
 form = new FormGroup({
   numeroFactura: new FormControl ( this.data?.factura?.numeroFactura ?? '', Validators.required),
   idCliente: new FormControl(this.data?.factura?.idCliente ?? '', Validators.required),
-  proveedor: new FormControl('', Validators.required),
-  producto: new FormControl('', Validators.required),
+  idProvedor: new FormControl({value: this.data?.factura?.idProvedor ?? '', disabled: this.data.tipoAccion==='edit'}
+                                , Validators.required),
+  idProducto: new FormControl( {value: this.data?.factura?.idProducto ?? '', disabled: this.data.tipoAccion==='edit' }
+                                , Validators.required),
   estado: new FormControl('A'),
 });
 
@@ -55,17 +57,19 @@ form = new FormGroup({
     return this.form.get('idCliente');
   }
 
-  get proveedorField(){
-    return this.form.get('proveedor');
+  get idProvedorField(){
+
+    return this.form.get('idProvedor');
   }
-  get productoField(){
-    return this.form.get('proveedor');
+  get idProductoField(){
+    return this.form.get('idProducto');
   }
 
     save() {
         console.log(this.form.value);
         if(this.form.valid){
           const datos = this.form.value ;
+          console.log(this.form.get('idProvedor') +'-------->>>' + datos.idProducto)
       if (this.data?.factura?.id) {
         console.log("ingreso actualizar");
         this.billingService.editFactura(datos, this.data.factura.id).subscribe(
