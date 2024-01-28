@@ -2,7 +2,6 @@ import {Component, Inject, Input} from '@angular/core';
 import {DIALOG_DATA, DialogRef} from "@angular/cdk/dialog";
 import {FormControl, FormGroup, Validators} from "@angular/forms"
 import {BillingService} from "@services/billing.service";
-import {BillingListComponent} from "../billing-list/billing-list.component";
 import {FacturaModel} from "@models/factura.model";
 export interface DialogData {
   tipoAccion: 'edit'|'create';
@@ -17,7 +16,8 @@ export class BillingComponent {
 
 constructor(public dialogRef: DialogRef,
             @Inject(DIALOG_DATA) public data: DialogData,
-            private billingService: BillingService) {
+            private billingService: BillingService,
+            ) {
 }
 form = new FormGroup({
   numeroFactura: new FormControl ( this.data?.factura?.numeroFactura ?? '', Validators.required),
@@ -66,12 +66,9 @@ form = new FormGroup({
   }
 
     save() {
-        console.log(this.form.value);
         if(this.form.valid){
           const datos = this.form.value ;
-          console.log(this.form.get('idProvedor') +'-------->>>' + datos.idProducto)
       if (this.data?.factura?.id) {
-        console.log("ingreso actualizar");
         this.billingService.editFactura(datos, this.data.factura.id).subscribe(
           (respuesta) =>{
             console.log('Solicitud PUT exitosa:', respuesta);
@@ -86,6 +83,7 @@ form = new FormGroup({
         this.billingService.savefactura(datos).subscribe(
           (respuesta) =>{
             console.log('Solicitud POST exitosa:', respuesta);
+
           },
           (error) =>{
             console.error('Error en la solicitud POST:', error);

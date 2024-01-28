@@ -19,7 +19,6 @@ export class BillingService {
     return new HttpHeaders().set('Authorization', `Bearer ${this.token1}`);
   }
   findFactura(){
-
      const headers = this.createHeader();
     return this.http.get<FacturaModel[]>(`${this.apiUrl}/api/factura/`, { headers });
   }

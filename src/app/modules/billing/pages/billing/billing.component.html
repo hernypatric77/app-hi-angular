@@ -33,7 +33,7 @@
             <input type="text" name="cod-product" id="cod-product"
                    [ngClass]="validations('numeroFactura')"  formControlName="numeroFactura"
                    class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 "
-                   placeholder="Bonnie">
+                   placeholder="F-numero">
             <p class="mt-2 text-sm text-red-600 " *ngIf="numeroFacturaField?.touched && numeroFacturaField?.hasError('required')">
               <span class="font-medium">Requeirdo!</span> campo requerido.</p>
           </div>
@@ -43,7 +43,7 @@
             <input type="text" name="last-name" id="cod-cliente"
                    formControlName="idCliente" [ngClass]="validations('idCliente')"
                    class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 "
-                   placeholder="Green" >
+                   placeholder="Valor 1-4" >
             <p class="mt-2 text-sm text-red-600 " *ngIf="idClienteField?.touched && idClienteField?.hasError('required')">
               <span class="font-medium">Requeirdo!</span> campo requerido.</p>
           </div>
@@ -71,7 +71,7 @@
       </div>
       <!-- Modal footer -->
       <div class="flex items-center p-6 space-x-2">
-        <app-btn [typeBtn]="'submit'" [color]="'primary'">Save all</app-btn>
+        <app-btn [typeBtn]="'submit'" [color]="'primary'">Guardar</app-btn>
         <app-btn [typeBtn]="'button'" [color]="'danger'" (click)="dialogRef.close()">Salir</app-btn>
       </div>
     </form>

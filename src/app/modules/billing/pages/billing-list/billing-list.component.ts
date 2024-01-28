@@ -48,12 +48,15 @@ export class BillingListComponent implements OnInit {
     });
   }
 
-  ngOnInit(): void {
+  reloadBilling(){
     this.billingService.findFactura()
       .subscribe(data => {
         this.dataSource.init(data);
         this.total = this.dataSource.getTotal();
       })
+  }
+  ngOnInit(): void {
+    this.reloadBilling();
     this.inputSearch.valueChanges
       .pipe(debounceTime(300))
       .subscribe(value => {
@@ -74,11 +77,7 @@ export class BillingListComponent implements OnInit {
         console.error('Error en la solicitud POST:', error);
       }
     );
-    this.billingService.findFactura()
-      .subscribe(data => {
-        this.dataSource.init(data);
-        this.total = this.dataSource.getTotal();
-      })
+    this.reloadBilling();
   }
 
 
