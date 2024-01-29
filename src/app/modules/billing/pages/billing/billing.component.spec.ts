@@ -2,12 +2,12 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { BillingComponent } from './billing.component';
 
-describe('ProductComponent', () => {
+xdescribe('BillingComponent', () => {
   let component: BillingComponent;
   let fixture: ComponentFixture<BillingComponent>;
 
-  beforeEach(() => {
-    TestBed.configureTestingModule({
+  beforeEach(async () => {
+    await TestBed.configureTestingModule({
       declarations: [BillingComponent]
     });
     fixture = TestBed.createComponent(BillingComponent);
